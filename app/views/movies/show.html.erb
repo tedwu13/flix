@@ -1,0 +1,28 @@
+<h1><%= @movie.title %></h1>
+
+<div>
+  <h3>Rating: <%= @movie.rating %></h3>
+  <h3>Total Gross Sales: <%= number_to_currency(@movie.total_gross) %></h3>
+  <h3>Description: <%= @movie.description %></p>
+
+  <h3>Cast</h3>
+    <p>
+      <%= @movie.cast %>
+    </p>
+
+    <h3>Director</h3>
+    <p>
+      <%= @movie.director %>
+    </p>
+
+    <h3>Duration</h3>
+    <p>
+      <%= @movie.duration %>
+    </p>
+
+  <h3>Image</h3>
+  <%= image_for(@movie) %>
+  <%= link_to "Edit", edit_movie_path %>
+  <%= link_to pluralize(@movie.reviews.count, "review"), movie_reviews_path(@movie) %>
+  <%= link_to "Write Review", new_movie_review_path(@movie), class: 'button ok review' %>
+</div>

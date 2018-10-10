@@ -1,0 +1,41 @@
+<fieldset>
+<%= form_for @movie do |f| %>
+  <%= render 'shared/errors', object: @movie %>
+  <%= f.label :title %>:<br />
+  <%= f.text_field :title, :size => 40, autofocus: true %><br />
+
+
+  <%= f.label :total_gross %>:<br />
+  <%= f.number_field :total_gross %><br />
+
+  <%= f.label :rating %>:<br />
+  <%= f.select :rating, Movie::RATINGS, prompt: "Pick one" %>
+  <br />
+
+  <%= f.label :released_on %>:<br />
+  <%= f.date_select :released_on %>
+  <br />
+
+  <%= f.label :description %>:<br />
+  <%= f.text_area :description, cols: 75, rows: 10 %><br />
+  <br />
+
+  <%= f.label :cast %><br/>
+  <%= f.text_field :cast %>
+  <br />
+
+  <%= f.label :director %><br/>
+  <%= f.text_field :director %>
+  <br />
+
+  <%= f.label :duration %><br/>
+  <%= f.text_field :duration, size: 10 %>
+
+  <br />
+    <%= f.label :image_file_name %><br/>
+    <%= f.text_field :image_file_name %>
+
+  <%= f.submit %>
+  <%= link_to "Cancel", movies_path %>
+<% end %>
+</fieldset>
