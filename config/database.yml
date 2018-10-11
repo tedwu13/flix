@@ -25,7 +25,7 @@ test:
 #   database: db/production.sqlite3
 
 production:
-  adapter: sqlite3
+  adapter: postgresql
   database: production_heroku_database
   pool: 5
   timeout: 5000
