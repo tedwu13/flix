@@ -3,7 +3,7 @@
 <div>
   <h3>Rating: <%= @movie.rating %></h3>
   <h3>Total Gross Sales: <%= number_to_currency(@movie.total_gross) %></h3>
-  <h3>Description: <%= @movie.description %></p>
+  <h3>Description: <%= @movie.description %></h3>
 
   <h3>Cast</h3>
     <p>
@@ -20,6 +20,23 @@
       <%= @movie.duration %>
     </p>
 
+  <h3>Average Review</h3>
+  <p>
+    <%= format_average_stars(@movie) %>
+  </p>
+
+  <% if @movie.recent_reviews.any? %>
+    <h3>Reviews List</h3>
+    <ol id="review">
+    <% @movie.recent_reviews.each do |review| %>
+      <li><%= review.comment %> - By: <%= review.name %></li>
+    <% end %>
+    </ol>
+    <p>
+      Read all <%= link_to pluralize(@movie.reviews.size, "review"),
+                      movie_reviews_path(@movie) %>
+    </p>
+  <% end %>
   <h3>Image</h3>
   <%= image_for(@movie) %>
   <%= link_to "Edit", edit_movie_path %>
